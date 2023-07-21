@@ -33,7 +33,7 @@ const routes: Routes = [
   {
     path: "new-listing",
     component: NewListingPageComponent
-  }
+  },
 ];
 
 @NgModule({
