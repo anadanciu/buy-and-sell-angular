@@ -1,18 +1,22 @@
-import { Component, OnInit } from "@angular/core";
-import { Listing } from "../types";
-import { fakeListings } from "../fakedata";
+import { Component, OnInit, Inject } from '@angular/core';
+import { Listing } from '../types';
+import { ListingsService } from '../listings.service';
 
 @Component({
-    selector: "<app-listings-page></app-listings-page>",  
-    templateUrl: "./listings-page.component.html",
-    styleUrls: ["./listings-page.component.scss"]
+  selector: '<app-listings-page></app-listings-page>',
+  templateUrl: './listings-page.component.html',
+  styleUrls: ['./listings-page.component.scss'],
+  providers: [ListingsService],
 })
 export class ListingsPageComponent implements OnInit {
-    listings: Listing[] = [];
+  listings: Listing[] = [];
 
-    constructor() { }
+  constructor(private listingsService: ListingsService) {}
 
-    ngOnInit() : void {
-        this.listings = fakeListings;
-    }
+  ngOnInit(): void {
+    this.listingsService
+      .getListings()
+      .subscribe((listings) => (this.listings = listings));
+    console.log(this.listings);
+  }
 }
