@@ -19,12 +19,9 @@ export class NewListingPageComponent implements OnInit {
     console.log(newListing);
     this.listingsService
       .createListings(newListing.name, newListing.description, newListing.price)
-      .subscribe({
-        next: (listing) => {
-          this.listing = listing;
-          this.router.navigateByUrl('/my-listings');
-        },
-        error: (error) => console.log('error', error), // never reaches this point
+      .subscribe((listing) => {
+        this.listing = listing;
+        this.router.navigateByUrl('/my-listings');
       });
   }
 }
