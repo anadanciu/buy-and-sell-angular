@@ -40,3 +40,15 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+/dist
+dist/app-angular/3rdpartylicenses.txt
+dist/app-angular/favicon.ico
+dist/app-angular/index.html
+dist/app-angular/main.114b4ec26f83a20d.js
+dist/app-angular/index.html
+dist/app-angular/main.114b4ec26f83a20d.js
+dist/app-angular/main.98ca00be6490b041.js
+dist/app-angular/polyfills.7f6056c9120fbc6f.js
+dist/app-angular/runtime.22eb52b7ae39d210.js
+dist/app-angular/styles.35e78365dab59b3c.css
