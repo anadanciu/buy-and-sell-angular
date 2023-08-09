@@ -17,6 +17,5 @@ export class ListingsPageComponent implements OnInit {
     this.listingsService
       .getListings()
       .subscribe((listings) => (this.listings = listings));
-    console.log(this.listings);
   }
 }

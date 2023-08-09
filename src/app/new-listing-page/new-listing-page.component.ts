@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ListingsService } from '../listings.service';
 import { Listing } from '../types';
@@ -16,12 +16,13 @@ export class NewListingPageComponent implements OnInit {
   ) {}
   ngOnInit(): void {}
   onSubmit(newListing: Listing): void {
-    console.log(newListing);
     this.listingsService
       .createListings(newListing.name, newListing.description, newListing.price)
-      .subscribe((listing) => {
-        this.listing = listing;
-        this.router.navigateByUrl('/my-listings');
+      .subscribe({
+        next: (listing) => {
+          this.listing = listing;
+          //this.router.navigateByUrl('/my-listings');
+        },
       });
   }
 }

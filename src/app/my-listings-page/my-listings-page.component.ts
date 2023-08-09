@@ -12,8 +12,10 @@ export class MyListingsPageComponent {
   constructor(private listingsService: ListingsService) {}
 
   ngOnInit(): void {
-    this.listingsService.getListingsForUser().subscribe((listings) => {
-      this.listings = listings;
+    this.listingsService.getListingsForUser().subscribe({
+      next: (listings) => {
+        this.listings = listings;
+      },
     });
   }
 

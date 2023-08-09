@@ -55,7 +55,10 @@ export class ListingsService {
               `/api/users/${this.auth.currentUser?.uid}/listings`,
               httpOptionsWithAuthToken(token)
             )
-            .subscribe((listings) => observer.next(listings));
+            .subscribe((listings) => {
+              this.listings = listings;
+              observer.next(listings);
+            });
         } else {
           observer.next([]);
         }
