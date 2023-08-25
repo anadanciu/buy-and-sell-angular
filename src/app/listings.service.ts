@@ -1,7 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Listing } from './types';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import {
+  HttpClient,
+  HttpHeaders,
+  HttpErrorResponse,
+} from '@angular/common/http';
+import { Observable, throwError, catchError, map } from 'rxjs';
 import { Auth, AuthProvider, getAuth, GoogleAuthProvider } from 'firebase/auth';
 
 const httpOptions: Object = {
@@ -31,7 +35,10 @@ export class ListingsService {
   }
 
   getListings(): Observable<Listing[]> {
-    return this.http.get<Listing[]>('/api/listings');
+    return this.http.get<Listing[]>('/api/listings').pipe(
+      //map((results) => results),
+      catchError(this.handleError)
+    );
   }
 
   getListingById(id: string): Observable<Listing> {
@@ -111,5 +118,23 @@ export class ListingsService {
           .subscribe(() => observer.next());
       });
     });
+  }
+
+  private handleError(error: HttpErrorResponse) {
+    if (error.status === 0) {
+      // A client-side or network error occurred. Handle it accordingly.
+      console.error('An error occurred:', error.error);
+    } else {
+      // The backend returned an unsuccessful response code.
+      // The response body may contain clues as to what went wrong.
+      console.error(
+        `Backend returned code ${error.status}, body was: `,
+        error.error
+      );
+    }
+    // Return an observable with a user-facing error message.
+    return throwError(
+      () => new Error('Something bad happened; please try again later.')
+    );
   }
 }

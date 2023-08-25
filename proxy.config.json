@@ -1,6 +1,6 @@
 {
   "/api/*": {
-    "target": "https://buy-and-sell-48147.lm.r.appspot.com/",
+    "target": "http://localhost:8000",
     "secure": false,
     "logLevel": "debug",
     "changeOrigin": true
