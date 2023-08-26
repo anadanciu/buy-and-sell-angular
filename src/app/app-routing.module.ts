@@ -7,37 +7,41 @@ import { EditListingPageComponent } from './edit-listing-page/edit-listing-page.
 import { MyListingsPageComponent } from './my-listings-page/my-listings-page.component';
 import { NewListingPageComponent } from './new-listing-page/new-listing-page.component';
 
-
 const routes: Routes = [
   {
-    path: "listings",
-    component: ListingsPageComponent,
-    pathMatch: "full"
+    path: '',
+    redirectTo: 'listings',
+    pathMatch: 'full',
   },
   {
-    path: "listings/:id",
+    path: 'listings',
+    component: ListingsPageComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'listings/:id',
     component: ListingDetailPageComponent,
   },
   {
-    path: "contact/:id",
-    component: ContactPageComponent
+    path: 'contact/:id',
+    component: ContactPageComponent,
   },
   {
-    path: "edit-listing/:id",
-    component: EditListingPageComponent
+    path: 'edit-listing/:id',
+    component: EditListingPageComponent,
   },
   {
-    path: "my-listings",
+    path: 'my-listings',
     component: MyListingsPageComponent,
   },
   {
-    path: "new-listing",
-    component: NewListingPageComponent
-  }
+    path: 'new-listing',
+    component: NewListingPageComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
