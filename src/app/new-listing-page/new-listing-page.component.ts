@@ -21,7 +21,7 @@ export class NewListingPageComponent implements OnInit {
       .subscribe({
         next: (listing) => {
           this.listing = listing;
-          //this.router.navigateByUrl('/my-listings');
+          this.router.navigateByUrl('/my-listings');
         },
       });
   }

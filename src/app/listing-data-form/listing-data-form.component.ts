@@ -33,6 +33,6 @@ export class ListingDataFormComponent implements OnInit {
       price: this.price,
       views: 0,
     });
-    this.router.navigateByUrl('/my-listings');
+    //this.router.navigateByUrl('/my-listings');
   }
 }
